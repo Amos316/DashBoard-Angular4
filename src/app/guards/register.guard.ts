@@ -5,7 +5,6 @@ import { SettingsService } from '../services/settings.service';
 
 
 @Injectable()
-
 export class RegisterGuard implements CanActivate {
     constructor(private router: Router, private settingsService: SettingsService) { }
 

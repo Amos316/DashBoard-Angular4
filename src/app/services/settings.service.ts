@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Settings } from '../models/Settings';
+import { Settings } from '../models/settings';
 
 @Injectable()
 export class SettingsService {
   settings: Settings = {
-    allowRegistration: true, disableBalanceOnAdd: true, disableBalanceOnEdit: false
+    allowRegistration: false, disableBalanceOnAdd: false, disableBalanceOnEdit: true
   }
   constructor() {
     if (localStorage.getItem('settings') != null) {
