@@ -6,14 +6,14 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 
 export class AuthGuard implements CanActivate {
-    constructor(private router: Router, private afAuth: AngularFireAuth){}
+    constructor(private router: Router, private afAuth: AngularFireAuth) { }
 
-    canActivate(): Observable<boolean>{
+    canActivate(): Observable<boolean> {
         return this.afAuth.authState.map(auth => {
-            if(!auth){
+            if (!auth) {
                 this.router.navigate(['/login']);
                 return false;
-            }else {
+            } else {
                 return true;
             }
         })

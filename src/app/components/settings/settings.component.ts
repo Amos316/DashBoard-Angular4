@@ -17,7 +17,7 @@ export class SettingsComponent implements OnInit {
   ngOnInit() {
     this.settings = this.settingsService.getSettings();
   }
-  onSubmit(){
+  onSubmit() {
     this.settingsService.changeSettings(this.settings);
     this.flashMessagesService.show('Settings Saved', {
       cssClass: 'alert-success', timeout: 7000

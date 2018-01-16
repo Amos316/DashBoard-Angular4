@@ -3,19 +3,19 @@ import { Settings } from '../models/Settings';
 
 @Injectable()
 export class SettingsService {
-  settings: Settings ={
+  settings: Settings = {
     allowRegistration: true, disableBalanceOnAdd: true, disableBalanceOnEdit: false
   }
-  constructor() { 
-    if(localStorage.getItem('settings') != null){
-        this.settings = JSON.parse(localStorage.getItem('settings'));
+  constructor() {
+    if (localStorage.getItem('settings') != null) {
+      this.settings = JSON.parse(localStorage.getItem('settings'));
     }
   }
 
-  getSettings(){
+  getSettings() {
     return this.settings;
   }
-  changeSettings(settings: Settings){
-   localStorage.setItem('settings' , JSON.stringify(settings))
-}
+  changeSettings(settings: Settings) {
+    localStorage.setItem('settings', JSON.stringify(settings))
+  }
 }

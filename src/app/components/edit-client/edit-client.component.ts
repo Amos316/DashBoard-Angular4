@@ -11,12 +11,12 @@ import { SettingsService } from '../../services/settings.service';
   styleUrls: ['./edit-client.component.css']
 })
 export class EditClientComponent implements OnInit {
-     id: string;
-     client: Client ={firstName:'', lastName:'', email:'', phone:'',              balance:0,}
-     disableBalanceOnEdit: boolean = true;
+  id: string;
+  client: Client = { firstName: '', lastName: '', email: '', phone: '', balance: 0, }
+  disableBalanceOnEdit: boolean = true;
 
   constructor(private clientService: ClientService, private router: Router,
-              private route: ActivatedRoute, private flashMessagesService: FlashMessagesService, private settingsService: SettingsService) { }
+    private route: ActivatedRoute, private flashMessagesService: FlashMessagesService, private settingsService: SettingsService) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
@@ -25,20 +25,20 @@ export class EditClientComponent implements OnInit {
     });
     this.disableBalanceOnEdit = this.settingsService.getSettings().disableBalanceOnEdit;
   }
-  onSubmit({value, valid}: {value: Client, valid: boolean}){
-    if(!valid){
-        this.flashMessagesService.show('Please fill in all fields', {
-          cssClass: 'alert-danger', timeout: 7000
-        });
-        this.router.navigate(['edit-client/'+this.id]);
-    }else{
-        this.clientService.updateClient(this.id, value);
-        this.flashMessagesService.show('Client updated', {
-          cssClass: 'alert-success', timeout: 4000
-        });
-        this.router.navigate(['/client/'+this.id]);
+  onSubmit({ value, valid }: { value: Client, valid: boolean }) {
+    if (!valid) {
+      this.flashMessagesService.show('Please fill in all fields', {
+        cssClass: 'alert-danger', timeout: 7000
+      });
+      this.router.navigate(['edit-client/' + this.id]);
+    } else {
+      this.clientService.updateClient(this.id, value);
+      this.flashMessagesService.show('Client updated', {
+        cssClass: 'alert-success', timeout: 4000
+      });
+      this.router.navigate(['/client/' + this.id]);
     }
-}
+  }
 }
 
 
